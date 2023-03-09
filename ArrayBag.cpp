@@ -157,7 +157,7 @@ void ArrayBag<ItemType>::operator/=(const ArrayBag& bags){
 int count = bags.getCurrentSize();
 for(int i = 0; i < count;i++){
    ItemType new_bag_ = bags.items_[i];
-   if(!contains(new_bag_))){
+   if(!contains(new_bag_)){
       add(new_bag_);
    }
 }

@@ -100,8 +100,8 @@ void Book::setDigital(){
 
 */
 bool Book::operator==(const Book& b){
- Book bo;
-return bo.title_ == b.title_ && bo.author_ == b.author_ && bo.page_count_ == b.page_count_ && bo.is_digital_ == b.is_digital_; 
+ 
+return title_ == b.title_ && author_ == b.author_ && page_count_ == b.page_count_ &&is_digital_== b.is_digital_; 
 }
 
 /**
@@ -113,24 +113,10 @@ return bo.title_ == b.title_ && bo.author_ == b.author_ && bo.page_count_ == b.p
 
   Note: ALL attributes must be equal for two books to be deemed equal.
 
-*/
-/** if(bo.title_ == b.title_ && bo.author_ == b.author_ && bo.page_count_ == b.page_count_ && bo.is_digital_ == b.is_digital_){
-  return true;
- } else{
-  return false;
- }
- */
-/**
-  Book books;
- if(books.title_ != boo.title_ && books.author_ != boo.author_ && books.page_count_ != boo.page_count_ && books.is_digital_ != boo.is_digital_){
-  return true;
-} else{
-  return false;
-}
+
 */
 bool Book::operator!=(const Book& boo){
- Book books;
-return books.title_ != boo.title_ && books.author_ != boo.author_ && books.page_count_ != boo.page_count_ && books.is_digital_ != boo.is_digital_;
+return !(*this == boo);
 }
 /**
 

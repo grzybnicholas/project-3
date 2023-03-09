@@ -21,5 +21,4 @@ class LibraryRecord : public ArrayBag<Book>{
  void operator+=(const LibraryRecord& recs);
  void operator/=(const LibraryRecord& record);
 };
-#include "LibraryRecord.cpp"
 #endif
