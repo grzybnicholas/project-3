@@ -1,3 +1,10 @@
+/*
+ArrayBag.hpp
+Nicholas Grzyb
+Implementation of ArrayBag class
+
+*/
+
 #ifndef ARRAY_BAG_
 #define ARRAY_BAG_
 #include <iostream>
