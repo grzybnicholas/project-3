@@ -1,3 +1,11 @@
+/*
+Book.hpp
+Nicholas Grzyb
+Implementation of Book class
+
+*/
+
+
 #include "Book.hpp"
 #include <iostream>
 

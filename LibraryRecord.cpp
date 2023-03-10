@@ -1,3 +1,11 @@
+/*
+LibraryRecord.cpp
+Nicholas Grzyb
+Implementation of LibraryRecord class, a sublcass of ArrayBag
+
+*/
+
+
 #include "LibraryRecord.hpp"
 #include <iostream>
 #include <vector>

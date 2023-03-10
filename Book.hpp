@@ -1,3 +1,11 @@
+/*
+Book.hpp
+Nicholas Grzyb
+Interface of Book class
+
+*/
+
+
 #ifndef BOOK_HPP_
 #define BOOK_HPP_
 #include <iostream>

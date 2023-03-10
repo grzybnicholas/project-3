@@ -1,3 +1,12 @@
+/*
+LibraryRecord.hpp
+Nicholas Grzyb
+Interface of LibraryRecord class, a sublcass of ArrayBag
+
+*/
+
+
+
 #ifndef LIBRARY_RECORD_HPP
 #define LIBRARY_RECORD_HPP
 #include <iostream>

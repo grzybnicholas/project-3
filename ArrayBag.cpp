@@ -1,3 +1,8 @@
+/*
+Implementation for project 3 for ArrayBag class
+*/
+
+
 #include "ArrayBag.hpp"
 
 
