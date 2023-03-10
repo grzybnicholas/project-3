@@ -116,7 +116,7 @@ return title_ == b.title_ && author_ == b.author_ && page_count_ == b.page_count
 
 */
 bool Book::operator!=(const Book& boo){
-return !(*this == boo);
+return title_ != boo.title_ && author_ != boo.author_ && page_count_ != boo.page_count_ &&is_digital_!= boo.is_digital_;
 }
 /**
 
@@ -126,5 +126,10 @@ return !(*this == boo);
 
 */
 void Book::display(){
-  std::cout << title_ << "is written by" << author_ << ".\n" << "Page Count: " << page_count_ <<". "<<is_digital_ << "available digitally.\n";
+  std::cout << title_ << "is written by" << author_ << ".\n" << "Page Count: " << page_count_ <<". ";
+  if(is_digital_){
+    std::cout<<"It is available digitally \n";
+  }else{
+    std::cout <<"It is not available digitally \n";
+  }
 }

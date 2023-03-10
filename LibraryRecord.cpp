@@ -80,11 +80,34 @@ void LibraryRecord::display(){
 
 */
 void LibraryRecord::displayTitles(){
-for(int i = 0; i< item_count_; i++){
-  cout << items_[i].getTitle() <<" ,"<<"!/n";
+for(int i = 0; i< getCurrentSize(); i++){
+  cout << items_[i].getTitle();
+  if(i != getCurrentSize()-1){
+    cout << ", "; //prints out the comma between the book titles
+  }else{
+    cout << "!\n"; // ends the list of titles with the exclamation mark
+  }
 }
 }
+/**
 
+  @return:    Returns true if the LibraryRecord was successfully duplicated, false otherwise (there is nothing to duplicate or duplicating would exceed DEFAULT_CAPACITY).
+
+  @post:      Duplicates all the items in the LibraryRecord
+
+  Example: we originally have [book1, book2] and after duplication we have [book1, book2, book1, book2]
+
+*/
+bool LibraryRecord::duplicateStock(){
+ if(isEmpty() || getCurrentSize() * 2> DEFAULT_CAPACITY){ //multiply by 2 cause its checking if its being duped or not due to the capacity
+  return false;
+ }else{
+  for(int i = 0; i <getCurrentSize(); i++){
+    add(items_[i]); // actually dupes the library record cause it has space
+  }
+ }
+ return true;
+}
 /**
   @param:   A reference to a book
 
@@ -93,6 +116,94 @@ for(int i = 0; i< item_count_; i++){
   @post: remove all occurrences of the referenced book
 
 */
-bool LibraryRecord::removeStock(const Book& booke){
-    
+bool LibraryRecord::removeStock(const Book& stock){
+    bool away = getFrequencyOf(stock) > 0;
+    while(contains(stock)){
+      for(int i = 0; i <getCurrentSize(); i++){
+        if(items_[i] == stock){
+          remove(stock);
+        }
+      }
+    }
+    return away;
+}
+
+
+
+/**
+
+  @param:   A reference to another LibraryRecord
+
+  @return:  Returns true if the 2 library records have the same contents (including the same number of duplicates for each book), regardless of their order. For example, if the current holdings of the LibraryRecord are [book1, book2, book3]
+
+  and those of the referenced LibraryRecord are [book3, book1, book2], it will return true.
+
+
+  However, [book1, book2, book2, book3] is not equivalent to [book1, book2, book3, book3], because it contains two copies of book2 and only one copy of book3
+  */
+ bool LibraryRecord::equivalentRecords(const LibraryRecord& rec){
+  if(getCurrentSize() != rec.getCurrentSize()){
+    return false;
+  }else{
+    for(int i = 0; i < getCurrentSize(); i++){
+      if(getFrequencyOf(items_[i]) != rec.getFrequencyOf(items_[i])){
+        return false;
+      }
+    }
+  }
+  return true;
+ }
+
+
+/**
+
+    @param:   A reference to another LibraryRecord object
+
+    @post:    Combines the contents from both LibraryRecord objects, including duplicates.
+
+    Example: [book1, book2, book3] += [book1, book4] will produce [book1, book2, book3, book1, book4]
+
+
+    IMPORTANT: We are carrying over the number of times a book has been checked out. For example, if we have LibraryRecord1 += LibraryRecord2 and
+
+    book4 is in LibraryRecord2 and has been checked out 2 times, then it should still be checked out 2 times in LibraryRecord1 after the += operation
+
+    Hint: use getCheckOutHistory and the checkout history vector
+
+*/
+
+void LibraryRecord::operator+=(const LibraryRecord& recs){
+ for(int i = 0; i < recs.getCurrentSize(); i++){
+  add(recs.items_[i]);
+  for(int x = 0; x < recs.getCheckOutHistory(recs.items_[i]); x++){
+    checked_.push_back(recs.items_[i]);
+  }
+ }
+}
+
+
+/** @param:   A reference to another LibraryRecord object
+
+    @post:    Combines the contents from both LibraryRecord objects, EXCLUDING duplicates.
+
+    Example: [book1, book2, book3] /= [book1, book4] will produce [book1, book2, book3, book4]
+
+
+    IMPORTANT: We are carrying over the number of times a book has been checked out. For example, if we have LibraryRecord1 /= LibraryRecord2 and
+
+    book4 is in LibraryRecord2 and has been checked out 2 times, then it should still be checked out 2 times in LibraryRecord1 after the /= operation
+
+    Hint: use getCheckOutHistory and the checkout history vector
+
+*/
+
+void LibraryRecord::operator/=(const LibraryRecord& record){
+  for(int i = 0; i < record.getCurrentSize(); i++){
+    if(!contains(record.items_[i])){
+       add(record.items_[i]);
+       for(int x = 0; x < record.getCheckOutHistory(record.items_[i]); x++){
+         checked_.push_back(record.items_[i]);
+    }
+}
+}
 }

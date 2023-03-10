@@ -16,7 +16,7 @@ class LibraryRecord : public ArrayBag<Book>{
  void display();
  void displayTitles();
  bool duplicateStock();
- bool removeStock(const Book& booke);
+ bool removeStock(const Book& stock);
  bool equivalentRecords(const LibraryRecord& rec);
  void operator+=(const LibraryRecord& recs);
  void operator/=(const LibraryRecord& record);
