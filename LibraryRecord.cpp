@@ -50,7 +50,7 @@ bool LibraryRecord::checkOut(const Book& books){
 
 */
 int LibraryRecord::getCheckOutHistory(const Book& booked) const{
-int count;
+int count = 0;
 for(int i = 0;i < checked_.size(); i++){
     if(booked.getTitle() == checked_[i].getTitle()){
         count++;
