@@ -146,7 +146,8 @@ template<class ItemType>
 void ArrayBag<ItemType>::operator+=(const ArrayBag<ItemType>& bag){
   int z = bag.item_count_;
  for(int i = 0; i < z; i++){
-   add(bag.items_[i]);
+   items_[item_count_] = bag[i];
+   item_count_++;
  }
 }
 /** @param:   A reference to another ArrayBag object
@@ -161,9 +162,9 @@ template<class ItemType>
 void ArrayBag<ItemType>::operator/=(const ArrayBag<ItemType>& bags){
 int count = bags.getCurrentSize();
 for(int i = 0; i < count;i++){
-   ItemType new_bag_ = bags.items_[i];
-   if(!contains(new_bag_)){
-      add(new_bag_);
+   if(!contains(bags[i])){
+      items_[item_count_]=bags[i];
+      item_count_++;
    }
 }
 }
