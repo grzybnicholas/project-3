@@ -55,8 +55,8 @@ for(int i = 0;i < checked_.size(); i++){
     if(booked.getTitle() == checked_[i].getTitle()){
         count++;
     }
-    return count;
 }
+return count;
 }
 
 /**
