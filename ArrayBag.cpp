@@ -143,7 +143,7 @@ int ArrayBag<ItemType>::getIndexOf(const ItemType& target) const
 
 */
 template<class ItemType>
-void ArrayBag<ItemType>::operator+=(const ArrayBag& bag){
+void ArrayBag<ItemType>::operator+=(const ArrayBag<ItemType>& bag){
   int z = bag.item_count_;
  for(int i = 0; i < z; i++){
    add(bag.items_[i]);
@@ -158,7 +158,7 @@ void ArrayBag<ItemType>::operator+=(const ArrayBag& bag){
 */
 
 template<class ItemType>
-void ArrayBag<ItemType>::operator/=(const ArrayBag& bags){
+void ArrayBag<ItemType>::operator/=(const ArrayBag<ItemType>& bags){
 int count = bags.getCurrentSize();
 for(int i = 0; i < count;i++){
    ItemType new_bag_ = bags.items_[i];

@@ -5,8 +5,8 @@ Implementation of ArrayBag class
 
 */
 
-#ifndef ARRAY_BAG_
-#define ARRAY_BAG_
+#ifndef ARRAY_BAG_HPP
+#define ARRAY_BAG_HPP
 #include <iostream>
 #include <vector>
 
@@ -52,8 +52,8 @@ public:
     @return the number of times an_entry is found in items_
   **/
   int getFrequencyOf(const ItemType& an_entry) const;
-  void operator+=(const ArrayBag& bag);
-  void operator/=(const ArrayBag& bags);
+  void operator+=(const ArrayBag<ItemType>& bag);
+  void operator/=(const ArrayBag<ItemType>& bags);
 
 
 
